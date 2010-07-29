@@ -92,9 +92,7 @@ build() {
 
   if [[ $CARCH == i686 ]]; then
 
-### i686 build
-
-    msg2 "Building Wine..."
+msg2 "Building Wine..."
 
     cd "$srcdir/$pkgname-32-build"
     ../$pkgname/configure \
@@ -106,9 +104,7 @@ build() {
 
   else
 
-### x86_64 build
-
-    msg2 "Building Wine-64..."
+msg2 "Building Wine-64..."
 
     cd "$srcdir/$pkgname-64-build"
     ../$pkgname/configure \
@@ -120,9 +116,7 @@ build() {
 
     make
 
-### cross-32 build
-
-    msg2 "Building Wine-32..."
+msg2 "Building Wine-32..."
 
     cd "$srcdir/$_pkgbasename-32-build"
     ../$_pkgbasename/configure \
@@ -138,29 +132,35 @@ build() {
        --with-wine64="$srcdir/$_pkgbasename-64-build"
 
     make
-
   fi
 }
 
 package() {
-  cd "$srcdir/$_pkgbasename-32-build"
-
   if [[ $CARCH == i686 ]]; then
+
+msg2 "Packaging Wine..."
+
+    cd "$srcdir/$_pkgbasename-32-build"
 
     make prefix="$pkgdir/usr" install
 
   else
 
+msg2 "Packaging Wine-32..."
+
+    cd "$srcdir/$_pkgbasename-32-build"
+
     make prefix="$pkgdir/usr" \
       libdir="$pkgdir$_libdir32" \
       dlldir="$pkgdir$_libdir32/wine" install
+
+msg2 "Packaging Wine-64..."
 
     cd "$srcdir/$_pkgbasename-64-build"
 
     make prefix="$pkgdir/usr" \
       libdir="$pkgdir$_libdir64" \
       dlldir="$pkgdir$_libdir64/wine" install
-
   fi
 
   mkdir -p "$pkgdir/etc/wine"
