@@ -9,8 +9,10 @@ pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 
-source=(http://ibiblio.org/pub/linux/system/emulators/$pkgname/$pkgname-$_pkgbasever.tar.bz2)
-md5sums=('f266536a8096f6b705f2f802549dc0e5')
+source=(http://ibiblio.org/pub/linux/system/emulators/$pkgname/$pkgname-$_pkgbasever.tar.bz2
+        unbreak-wow64.patch)
+md5sums=('f266536a8096f6b705f2f802549dc0e5'
+         'c3118b7df69ad4e93b5ce98f6a592620')
 
 pkgdesc="A compatibility layer for running Windows programs"
 url="http://www.winehq.com"
@@ -86,6 +88,13 @@ build() {
 
   # Allow ccache to work
   mv $pkgname-$_pkgbasever $pkgname
+
+msg2 "Patching..."
+
+  (
+    cd $pkgname
+    patch -Np1 -i "$srcdir/unbreak-wow64.patch"
+  )
 
   # (Re)create build dirs
   rm -rf $pkgname-{32,64}-build
@@ -168,3 +177,4 @@ msg2 "Packaging Wine-64..."
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
+
