@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -16,6 +16,7 @@ pkgdesc="A compatibility layer for running Windows programs"
 url="http://www.winehq.com"
 arch=(i686 x86_64)
 license=(LGPL)
+repleaces=(bin32-wine)
 
 depends=(
   fontconfig      lib32-fontconfig
