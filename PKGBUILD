@@ -42,7 +42,6 @@ makedepends=(autoconf ncurses bison perl fontforge flex prelink
   lcms            lib32-lcms
   mpg123          lib32-mpg123
   openal          lib32-openal
-  esound          lib32-esound
   jack            lib32-jack
   libcups         lib32-libcups
   gnutls          lib32-gnutls
@@ -60,7 +59,6 @@ optdepends=(
   libxml2       lib32-libxml2
   mpg123        lib32-mpg123
   openal        lib32-openal
-  esound        lib32-esound
   jack          lib32-jack
   libcups       lib32-libcups
   gnutls        lib32-gnutls
