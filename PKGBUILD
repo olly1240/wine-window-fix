@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.3.19
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -48,6 +48,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex prelink
   libcups         lib32-libcups
   gnutls          lib32-gnutls
   v4l-utils       lib32-v4l-utils
+  oss
 )
   
 optdepends=(
@@ -62,6 +63,7 @@ optdepends=(
   libcups         lib32-libcups
   gnutls          lib32-gnutls
   v4l-utils       lib32-v4l-utils
+  oss
 )
 
 if [[ $CARCH == i686 ]]; then
@@ -85,6 +87,10 @@ build() {
   # Get rid of old build dirs
   rm -rf $pkgname-{32,64}-build
   mkdir $pkgname-32-build
+
+  # hacky hax for ossv4 being "too old"
+  sed -i "s|<sys/soundcard.h>|</usr/lib/oss/include/sys/soundcard.h>|g" $pkgname/configure
+  sed -i "s|<sys/soundcard.h>|</usr/lib/oss/include/sys/soundcard.h>|g" $pkgname/dlls/wineoss.drv/*.c
 
   if [[ $CARCH == x86_64 ]]; then
     msg2 "Building Wine-64..."
