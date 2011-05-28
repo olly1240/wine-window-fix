@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.3.21
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -25,6 +25,7 @@ depends=(
   libxrandr       lib32-libxrandr
   libxdamage      lib32-libxdamage
   libxxf86dga     lib32-libxxf86dga
+  libxi           lib32-libxi
   alsa-lib        lib32-alsa-lib
   desktop-file-utils
 )
