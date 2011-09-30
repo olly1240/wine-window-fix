@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.3.29
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -62,6 +62,7 @@ optdepends=(
   libcups         lib32-libcups
   gnutls          lib32-gnutls
   v4l-utils       lib32-v4l-utils
+  libpulse        lib32-libpulse
   oss
 )
 
