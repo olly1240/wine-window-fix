@@ -25,7 +25,6 @@ depends=(
   libxrandr       lib32-libxrandr
   libxdamage      lib32-libxdamage
   libxi           lib32-libxi
-  alsa-lib        lib32-alsa-lib
   desktop-file-utils
 )
 
@@ -46,6 +45,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex prelink
   openal          lib32-openal
   libcups         lib32-libcups
   v4l-utils       lib32-v4l-utils
+  alsa-lib        lib32-alsa-lib
   oss
 )
   
@@ -61,6 +61,7 @@ optdepends=(
   v4l-utils       lib32-v4l-utils
   libpulse        lib32-libpulse
   alsa-plugins    lib32-alsa-plugins
+  alsa-lib        lib32-alsa-lib
   oss
 )
 
