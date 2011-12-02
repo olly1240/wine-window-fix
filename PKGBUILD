@@ -25,6 +25,7 @@ depends=(
   libxrandr       lib32-libxrandr
   libxdamage      lib32-libxdamage
   libxi           lib32-libxi
+  gettext         lib32-gettext
   desktop-file-utils
 )
 
