@@ -118,7 +118,8 @@ build() {
     --with-x \
     "${_wine32opts[@]}"
 
-  make
+  # These additional CFLAGS solve FS#27560
+  make CFLAGS+="-mstackrealign" CXXFLAGS+="-mstackrealign"
 }
 
 package() {
