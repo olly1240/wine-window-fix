@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.3.35
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -120,6 +120,9 @@ build() {
 
   # These additional CFLAGS solve FS#27560
   make CFLAGS+="-mstackrealign" CXXFLAGS+="-mstackrealign"
+
+  # These additional CFLAGS solve FS#27662
+  make CFLAGS+="-D_FORTIFY_SOURCE=0" CXXFLAGS+="-D_FORTIFY_SOURCE=0"
 }
 
 package() {
