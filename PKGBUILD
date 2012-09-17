@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.5.13
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -45,6 +45,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex prelink
   openal          lib32-openal
   v4l-utils       lib32-v4l-utils
   alsa-lib        lib32-alsa-lib
+  libxcomposite   lib32-libxcomposite
   oss
   samba
 )
@@ -63,6 +64,7 @@ optdepends=(
   alsa-plugins    lib32-alsa-plugins
   alsa-lib        lib32-alsa-lib
   libjpeg-turbo   lib32-libjpeg-turbo
+  libxcomposite   lib32-libxcomposite
   oss             cups
   samba
 )
