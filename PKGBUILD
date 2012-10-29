@@ -28,6 +28,7 @@ depends=(
   gettext         lib32-gettext
   glu             lib32-glu
   libsm           lib32-libsm
+  gcc-libs        lib32-gcc-libs
   desktop-file-utils
 )
 
