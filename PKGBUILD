@@ -105,6 +105,7 @@ build() {
       --prefix=/usr \
       --libdir=/usr/lib \
       --with-x \
+      --without-gstreamer \ # FS#33655
       --enable-win64
 
     make
@@ -122,6 +123,7 @@ build() {
   ../$pkgname/configure \
     --prefix=/usr \
     --with-x \
+    --without-gstreamer \ # FS#33655
     "${_wine32opts[@]}"
 }
 
