@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.5.23
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -105,8 +105,9 @@ build() {
       --prefix=/usr \
       --libdir=/usr/lib \
       --with-x \
-      --without-gstreamer \ # FS#33655
+      --without-gstreamer \
       --enable-win64
+    # Gstreamer was disabled for FS#33655
 
     make
 
@@ -123,8 +124,11 @@ build() {
   ../$pkgname/configure \
     --prefix=/usr \
     --with-x \
-    --without-gstreamer \ # FS#33655
+    --without-gstreamer \
     "${_wine32opts[@]}"
+
+  # These additional flags solve FS#23277
+  make CFLAGS+="-mincoming-stack-boundary=2" CXXFLAGS+="-mincoming-stack-boundary=2"
 }
 
 package() {
