@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.5.28
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -54,8 +54,10 @@ makedepends=(autoconf ncurses bison perl fontforge flex prelink
   libxcomposite   lib32-libxcomposite
   mesa            lib32-mesa
   mesa-libgl      lib32-mesa-libgl
+  libcl           lib32-libcl
   oss
   samba
+  opencl-headers
 )
   
 optdepends=(
@@ -74,6 +76,8 @@ optdepends=(
   libjpeg-turbo   lib32-libjpeg-turbo
   libxcomposite   lib32-libxcomposite
   libxinerama     lib32-libxinerama
+  ncurses         lib32-ncurses
+  libcl           lib32-libcl
   oss             cups
   samba
 )
@@ -122,7 +126,8 @@ build() {
       --enable-win64
     # Gstreamer was disabled for FS#33655
 
-    make
+    # These additional flags solve FS#34819
+    make CFLAGS+="-fno-builtin-memcpy" CXXFLAGS+="-fno-builtin-memcpy"
 
     _wine32opts=(
       --libdir=/usr/lib32
