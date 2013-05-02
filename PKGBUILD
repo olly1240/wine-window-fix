@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.5.29
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -109,9 +109,8 @@ build() {
   rm -rf $pkgname-{32,64}-build
   mkdir $pkgname-32-build
 
-  # These additional CFLAGS solve FS#27662 and FS#34195
-  export CFLAGS="${CFLAGS/-D_FORTIFY_SOURCE=2/} -D_FORTIFY_SOURCE=0"
-  export CXXFLAGS="${CXXFLAGS/-D_FORTIFY_SOURCE=2/} -D_FORTIFY_SOURCE=0"
+  # These additional CPPFLAGS solve FS#27662 and FS#34195
+  export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/} -D_FORTIFY_SOURCE=0"
 
   if [[ $CARCH == x86_64 ]]; then
     msg2 "Building Wine-64..."
