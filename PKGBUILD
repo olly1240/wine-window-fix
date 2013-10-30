@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -18,6 +18,7 @@ md5sums=('b67d3ee7bfbfdabe5fd8ace66692eb52'
 pkgdesc="A compatibility layer for running Windows programs"
 url="http://www.winehq.com"
 arch=(i686 x86_64)
+options=(staticlibs)
 license=(LGPL)
 install=wine.install
 
