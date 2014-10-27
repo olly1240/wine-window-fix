@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.7.29
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -33,6 +33,7 @@ _depends=(
   glu             lib32-glu
   libsm           lib32-libsm
   gcc-libs        lib32-gcc-libs
+  libpcap         lib32-libpcap
   desktop-file-utils
 )
 
