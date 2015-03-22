@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.7.39
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -101,6 +101,8 @@ fi
 
 prepare() {
   cd $pkgname-$_pkgbasever
+
+  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 }
 
 build() {
