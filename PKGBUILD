@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.7.55
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -53,6 +53,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   mpg123          lib32-mpg123
   openal          lib32-openal
   v4l-utils       lib32-v4l-utils
+  libpulse        lib32-libpulse
   alsa-lib        lib32-alsa-lib
   libxcomposite   lib32-libxcomposite
   mesa            lib32-mesa
