@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.9.8
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -22,7 +22,6 @@ url="http://www.winehq.com"
 arch=(i686 x86_64)
 options=(staticlibs)
 license=(LGPL)
-install=wine.install
 
 _depends=(
   fontconfig      lib32-fontconfig
