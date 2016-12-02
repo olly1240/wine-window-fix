@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=1.9.24
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -58,7 +58,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   libxcomposite         lib32-libxcomposite
   mesa                  lib32-mesa
   mesa-libgl            lib32-mesa-libgl
-  libcl                 lib32-libcl
+  opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   samba
@@ -80,7 +80,7 @@ optdepends=(
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
   ncurses               lib32-ncurses
-  libcl                 lib32-libcl
+  opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   cups
