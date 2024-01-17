@@ -88,7 +88,7 @@ optdepends=(
 makedepends=(${makedepends[@]} ${depends[@]})
 install=wine.install
 
-prepare() {
+build() {
   # Allow ccache to work
   mv $pkgname-$_pkgbasever $pkgname
 
@@ -99,9 +99,7 @@ prepare() {
   # Get rid of old build dirs
   rm -rf $pkgname-{32,64}-build
   mkdir $pkgname-32-build
-}
 
-build() {
   cd "$srcdir"
 
   msg2 "Building Wine-64..."
