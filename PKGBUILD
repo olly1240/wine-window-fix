@@ -112,7 +112,6 @@ build() {
     --with-x \
     --with-gstreamer \
     --enable-win64
-  # Gstreamer was disabled for FS#33655
 
   make
 
