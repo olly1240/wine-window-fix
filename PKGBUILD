@@ -96,16 +96,9 @@ build() {
   export CFLAGS="${CFLAGS/-fno-plt/} -ffat-lto-objects"
   export LDFLAGS="${LDFLAGS/,-z,now/}"
 
-  # Get rid of old build dirs
-  rm -rf $pkgname-{32,64}-build
-  mkdir $pkgname-32-build
-
-  cd "$srcdir"
-
   msg2 "Building Wine-64..."
-
-  mkdir $pkgname-64-build
-  cd "$srcdir/$pkgname-64-build"
+  mkdir "$pkgname-64-build"
+  cd "$pkgname-64-build"
   ../$pkgname/configure \
     --prefix=/usr \
     --libdir=/usr/lib \
@@ -115,6 +108,8 @@ build() {
 
   make
 
+  cd ..
+
   _wine32opts=(
     --libdir=/usr/lib32
     --with-wine64="$srcdir/$pkgname-64-build"
@@ -123,7 +118,8 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   msg2 "Building Wine-32..."
-  cd "$srcdir/$pkgname-32-build"
+  mkdir "$pkgname-32-build"
+  cd "$pkgname-32-build"
   ../$pkgname/configure \
     --prefix=/usr \
     --with-x \
