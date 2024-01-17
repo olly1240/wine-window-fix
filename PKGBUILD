@@ -93,8 +93,7 @@ build() {
   mv $pkgname-$_pkgbasever $pkgname
 
   # Doesn't compile without remove these flags as of 4.10
-  export CFLAGS="${CFLAGS/-fno-plt/} -ffat-lto-objects"
-  export LDFLAGS="${LDFLAGS/,-z,now/}"
+  export CFLAGS="$CFLAGS -ffat-lto-objects"
 
   msg2 "Building Wine-64..."
   mkdir "$pkgname-64-build"
