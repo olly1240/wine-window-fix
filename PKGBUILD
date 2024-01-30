@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=9.1
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -33,8 +33,10 @@ depends=(
   libpcap         lib32-libpcap
   libunwind       lib32-libunwind
   libxcursor      lib32-libxcursor
+  libxkbcommon    lib32-libxkbcommon
   libxi           lib32-libxi
   libxrandr       lib32-libxrandr
+  wayland         lib32-wayland
 )
 makedepends=(autoconf bison perl flex mingw-w64-gcc
   alsa-lib              lib32-alsa-lib
@@ -102,6 +104,7 @@ build() {
     --prefix=/usr \
     --libdir=/usr/lib \
     --with-x \
+    --with-wayland \
     --with-gstreamer \
     --enable-win64
 
@@ -122,6 +125,7 @@ build() {
   ../$pkgname/configure \
     --prefix=/usr \
     --with-x \
+    --with-wayland \
     --with-gstreamer \
     "${_wine32opts[@]}"
 
