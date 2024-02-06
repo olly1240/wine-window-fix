@@ -5,7 +5,7 @@
 
 pkgname=wine
 pkgver=9.1
-pkgrel=2
+pkgrel=3
 
 _pkgbasever=${pkgver/rc/-rc}
 
