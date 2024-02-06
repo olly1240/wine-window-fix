@@ -23,7 +23,7 @@ pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 arch=(x86_64)
 options=(staticlibs !lto)
-license=(LGPL)
+license=(LGPL-2.1-or-later)
 depends=(
   desktop-file-utils
   fontconfig      lib32-fontconfig
