@@ -98,9 +98,9 @@ build() {
   export CFLAGS="$CFLAGS -ffat-lto-objects"
 
   # Apply flags for cross-compilation
-  export CROSSCFLAGS="${CFLAGS/-Werror=format-security/}"
-  export CROSSCXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
-  export CROSSLDFLAGS="${LDFLAGS//-Wl,-z*([^[:space:]])/}"
+  export CROSSCFLAGS="-O2 -pipe"
+  export CROSSCXXFLAGS="-O2 -pipe"
+  export CROSSLDFLAGS="-Wl,-O1"
 
   msg2 "Building Wine-64..."
   mkdir "$pkgname-64-build"
