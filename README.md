@@ -34,9 +34,9 @@ My inital intent was to provide a signed package as release but it involved fidd
   
 #### Manually compile the PKGBUILD
 
-No specific fiddling should be necessary. Grab my signature with the same procedure as the *Direct Install* method, then compile the whole thing with  
+No specific fiddling should be necessary. Compile the whole thing with  
 ```bash
-makepkg -i 
+makepkg -si 
 ```
 
 #### AUR
