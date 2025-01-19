@@ -1,0 +1,14 @@
+diff -ura src/wine-9.22.mod/dlls/winex11.drv/mouse.c src/wine-9.22/dlls/winex11.drv/mouse.c
+--- src/wine-9.22.mod/dlls/winex11.drv/mouse.c	2025-01-19 06:29:10.498313295 +0100
++++ src/wine-9.22/dlls/winex11.drv/mouse.c	2025-01-19 06:36:50.974961957 +0100
+@@ -508,7 +508,8 @@
+     else if ((data = get_win_data( hwnd )))
+     {
+         if (window == root_window) pt = root_to_virtual_screen( pt.x, pt.y );
+-        else if (event_root == root_window) pt = root_to_virtual_screen( x_root, y_root );
++        /* https://bugs.winehq.org/show_bug.cgi?id=51357
++        else if (event_root == root_window) pt = root_to_virtual_screen( x_root, y_root );*/
+         else if (window == data->client_window)
+         {
+             pt.x += data->rects.client.left;
+Solo in src/wine-9.22/dlls/winex11.drv: mouse.c.rej
