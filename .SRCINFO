@@ -1,4 +1,4 @@
-pkgbase = wine
+pkgbase = wine-reparent-patch
 	pkgdesc = A compatibility layer for running Windows programs
 	pkgver = 10.0
 	pkgrel = 1
@@ -133,15 +133,19 @@ pkgbase = wine
 	optdepends = lib32-v4l-utils
 	optdepends = wine-gecko
 	optdepends = wine-mono
+	provides = wine
+	conflicts = wine
 	options = staticlibs
 	options = !lto
 	source = git+https://gitlab.winehq.org/wine/wine.git?signed#tag=wine-10.0
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
+	source = mouse_fix.patch
 	validpgpkeys = 5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
 	sha512sums = 3eef70afae25a40537e2f4bc615c90374829eaf46f3654202d53ac55e9e53bbc31c7fb3c3c65b9caf1a64baba85b1ede9822fe8e3f6e55c4bb3f181b1258751c
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
+	sha512sums = e157aba28ff6b0db8beaf4946b79d63468e0c8cfa959ded19b8e571d46bcede253de4f0a0f4bceb2ec8cf9d308d93db8963246767d7f54bb68d57cf97fb2f062
 
-pkgname = wine
+pkgname = wine-reparent-patch
