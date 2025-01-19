@@ -34,7 +34,7 @@ My inital intent was to provide a signed package as release but it involved fidd
   
 #### Manually compile the PKGBUILD
 
-No specific fiddling should be necessary. Compile the whole thing with  
+No specific fiddling should be necessary. Clone the repo, possibly a tag, then inside the folder compile the whole thing with  
 ```bash
 makepkg -si 
 ```
