@@ -28,7 +28,7 @@ pacman -U *filename*
   
 It will ask to replace your current wine install, then the UIs should mostly be fixed
 
-##### Notes on signing
+##### Notes on package signing
 
 My inital intent was to provide a signed package as release but it involved fiddling with pacman-key and adding my pgp key to it, and I assumed some people might not be comfortable with that 
   
