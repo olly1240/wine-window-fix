@@ -1,13 +1,13 @@
 diff -ura a/dlls/winex11.drv/mouse.c b/dlls/winex11.drv/mouse.c
---- a/dlls/winex11.drv/mouse.c	2025-01-19 06:29:10.498313295 +0100
-+++ b/dlls/winex11.drv/mouse.c	2025-01-19 06:36:50.974961957 +0100
-@@ -508,7 +508,8 @@
-     else if ((data = get_win_data( hwnd )))
+--- a/dlls/winex11.drv/mouse.c	2025-01-24 04:37:18.779220491 +0100
++++ b/dlls/winex11.drv/mouse.c	2025-01-24 04:41:22.795892896 +0100
+@@ -498,7 +498,8 @@
+            x_root, y_root, input );
+ 
+     if (window == root_window) pt = root_to_virtual_screen( pt.x, pt.y );
+-    else if (event_root == root_window) pt = root_to_virtual_screen( x_root, y_root );
++    /* https://bugs.winehq.org/show_bug.cgi?id=51357
++    else if (event_root == root_window) pt = root_to_virtual_screen( x_root, y_root );*/
+     else if (!hwnd)
      {
-         if (window == root_window) pt = root_to_virtual_screen( pt.x, pt.y );
--        else if (event_root == root_window) pt = root_to_virtual_screen( x_root, y_root );
-+        /* https://bugs.winehq.org/show_bug.cgi?id=51357
-+        else if (event_root == root_window) pt = root_to_virtual_screen( x_root, y_root );*/
-         else if (window == data->client_window)
-         {
-             pt.x += data->rects.client.left;
+         thread_data = x11drv_thread_data();
