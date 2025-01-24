@@ -3,6 +3,7 @@
 # Contributor: Eduardo Romero <eduardo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
+_origname=wine
 pkgname=wine-reparent-patch
 pkgver=10.0
 pkgrel=1
@@ -97,7 +98,7 @@ install=wine.install
 
 prepare() {
 
-  patch -p 1 -d $pkgname-$pkgver -i mouse_fix.patch
+  patch -p 1 -d $_origname-$pkgver -i mouse_fix.patch
 
 }
 
@@ -112,9 +113,9 @@ build() {
   export CROSSLDFLAGS="-Wl,-O1"
 
   msg2 "Building Wine-64..."
-  mkdir "$pkgname-64-build"
-  cd "$pkgname-64-build"
-  ../$pkgname/configure \
+  mkdir "$_origname-64-build"
+  cd "$_origname-64-build"
+  ../$_origname/configure \
     --prefix=/usr \
     --libdir=/usr/lib \
     --with-x \
@@ -128,15 +129,15 @@ build() {
 
   _wine32opts=(
     --libdir=/usr/lib32
-    --with-wine64="$srcdir/$pkgname-64-build"
+    --with-wine64="$srcdir/$_origname-64-build"
   )
 
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   msg2 "Building Wine-32..."
-  mkdir "$pkgname-32-build"
-  cd "$pkgname-32-build"
-  ../$pkgname/configure \
+  mkdir "$_origname-32-build"
+  cd "$_origname-32-build"
+  ../$_origname/configure \
     --prefix=/usr \
     --with-x \
     --with-wayland \
@@ -148,14 +149,14 @@ build() {
 
 package() {
   msg2 "Packaging Wine-32..."
-  cd "$srcdir/$pkgname-32-build"
+  cd "$srcdir/$_origname-32-build"
 
   make prefix="$pkgdir/usr" \
     libdir="$pkgdir/usr/lib32" \
     dlldir="$pkgdir/usr/lib32/wine" install
 
   msg2 "Packaging Wine-64..."
-  cd "$srcdir/$pkgname-64-build"
+  cd "$srcdir/$_origname-64-build"
   make prefix="$pkgdir/usr" \
     libdir="$pkgdir/usr/lib" \
     dlldir="$pkgdir/usr/lib/wine" install
