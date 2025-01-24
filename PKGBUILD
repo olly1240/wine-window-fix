@@ -3,7 +3,7 @@
 # Contributor: Eduardo Romero <eduardo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
-pkgname=wine
+pkgname=wine-reparent-patch
 pkgver=10.0
 pkgrel=1
 
@@ -11,10 +11,13 @@ _pkgbasever=${pkgver/rc/-rc}
 
 source=("git+https://gitlab.winehq.org/wine/wine.git?signed#tag=wine-$_pkgbasever"
         30-win32-aliases.conf
-        wine-binfmt.conf)
-sha512sums=('3eef70afae25a40537e2f4bc615c90374829eaf46f3654202d53ac55e9e53bbc31c7fb3c3c65b9caf1a64baba85b1ede9822fe8e3f6e55c4bb3f181b1258751c'
+        wine-binfmt.conf
+        mouse_fix.patch)
+sha512sums=('8b54aee952abd08969d3485ef12db9aabeea8627fdaf7a27cb3392477580f2b5882467cd15ba4670741b6b20cc48bb5e3585d44ee4fb95a013c513a3c04342e4'
+            'SKIP'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
+            'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
+            '4a392e49ca1477e849c3a98a973b00dabad90535df0110e90a6be666d9a12fd6affd3cd95854d343f9c088578cbae67098216a0f2e71297f3b862df37e7012c2')
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
@@ -87,8 +90,16 @@ optdepends=(
   wine-gecko
   wine-mono
 )
+conflicts=(wine)
+provides=(wine)
 makedepends=(${makedepends[@]} ${depends[@]})
 install=wine.install
+
+prepare() {
+
+  patch -p 1 -d $pkgname-$pkgver -i mouse_fix.patch
+
+}
 
 build() {
 
